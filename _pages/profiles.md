@@ -27,13 +27,13 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
     
-        - align: right
+    - align: right
     image: team/tatar.jpg
     content: tatar.md
     image_circular: false # crops the image to make it circular
     more_info: >
 
-        - align: right
+    - align: right
     image: team/spahi.jpg
     content: spahi.md
     image_circular: false # crops the image to make it circular

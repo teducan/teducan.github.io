@@ -7,109 +7,66 @@ nav: true
 nav_order: 2
 ---
 
-# 🧑‍🔬 Current Members
-
-<div class="row">
-  {% assign current = site.data.team.current %}
-  {% for member in current %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0">
-        {% if member.image %}
-          <img src="{{ member.image }}" class="card-img-top rounded-circle w-50 mx-auto mt-3" alt="{{ member.name }}">
-        {% endif %}
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text"><strong>{{ member.role }}</strong><br>{{ member.affiliation }}</p>
-          <p class="card-text small">{{ member.bio }}</p>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
+---
+layout: page
+title: People
+permalink: /people/
+description: Members of the research group
+nav: true
+nav_order: 7
 ---
 
-# 🏛️ Founding Members
+<style>
+.profile-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
 
-<div class="row">
-  {% assign founding = site.data.team.founding %}
-  {% for member in founding %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0">
-        {% if member.image %}
-          <img src="{{ member.image }}" class="card-img-top rounded-circle w-50 mx-auto mt-3" alt="{{ member.name }}">
-        {% endif %}
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text"><strong>{{ member.role }}</strong><br>{{ member.affiliation }}</p>
-          <p class="card-text small">{{ member.bio }}</p>
-        </div>
+.profile-img {
+  max-width: 150px;
+  margin-right: 2rem;
+  border-radius: 8px;
+}
+
+.profile-info {
+  flex: 1;
+}
+.profile-info h3 {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+}
+.profile-info .role {
+  font-weight: bold;
+  font-size: 0.95em;
+  color: #555;
+}
+.profile-info .affiliation {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #666;
+}
+</style>
+
+{% assign sections = "current,founding,past,associate,visiting" | split: "," %}
+
+{% for section in sections %}
+  {% assign members = site.data.people[section] %}
+  {% if members %}
+  <h2 style="margin-top:3rem">{{ section | capitalize }} Members</h2>
+    {% for person in members %}
+    <div class="profile-row">
+      {% if person.image %}
+      <img class="profile-img" src="{{ person.image }}" alt="{{ person.name }}">
+      {% endif %}
+      <div class="profile-info">
+        <h3>{{ person.name }}</h3>
+        {% if person.role %}<div class="role">{{ person.role }}</div>{% endif %}
+        {% if person.affiliation %}<div class="affiliation">{{ person.affiliation }}</div>{% endif %}
+        <p>{{ person.bio }}</p>
       </div>
     </div>
-  {% endfor %}
-</div>
-
----
-
-# 🕰️ Past Members
-
-<div class="row">
-  {% assign past = site.data.team.past %}
-  {% for member in past %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0">
-        {% if member.image %}
-          <img src="{{ member.image }}" class="card-img-top rounded-circle w-50 mx-auto mt-3" alt="{{ member.name }}">
-        {% endif %}
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text"><strong>{{ member.role }}</strong><br>{{ member.affiliation }}</p>
-          <p class="card-text small">{{ member.bio }}</p>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
-
----
-
-# 🌍 Visiting Researchers
-
-<div class="row">
-  {% assign visiting = site.data.team.visiting %}
-  {% for member in visiting %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0">
-        {% if member.image %}
-          <img src="{{ member.image }}" class="card-img-top rounded-circle w-50 mx-auto mt-3" alt="{{ member.name }}">
-        {% endif %}
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text"><strong>{{ member.role }}</strong><br>{{ member.affiliation }}</p>
-          <p class="card-text small">{{ member.bio }}</p>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
-
----
-
-# 🤝 Associate Researchers
-
-<div class="row">
-  {% assign associate = site.data.team.associate %}
-  {% for member in associate %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0">
-        {% if member.image %}
-          <img src="{{ member.image }}" class="card-img-top rounded-circle w-50 mx-auto mt-3" alt="{{ member.name }}">
-        {% endif %}
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text"><strong>{{ member.role }}</strong><br>{{ member.affiliation }}</p>
-          <p class="card-text small">{{ member.bio }}</p>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  {% endif %}
+{% endfor %}

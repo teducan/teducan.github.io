@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: TED University Conversation ANalysis Reserch Group # the website title (if blank, full name will be used instead)
 first_name: You
 middle_name: R.
 last_name: Name
@@ -191,6 +191,12 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - _pages/blog.md
+  - _pages/repositories.md
+  - _pages/cv.md
+  - _pages/teaching.md
+  - _pages/people.md
+
 keep_files:
   - CNAME
   - .nojekyll

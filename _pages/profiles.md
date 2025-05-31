@@ -6,16 +6,6 @@ description: Members of the research group
 nav: true
 nav_order: 2
 ---
-
----
-layout: page
-title: People
-permalink: /people/
-description: Members of the research group
-nav: true
-nav_order: 7
----
-
 <style>
 .profile-row {
   display: flex;
